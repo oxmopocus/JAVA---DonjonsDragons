@@ -4,6 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         Personnage[] personnages = new Personnage[20];
+        Personnage[] newArray = null;
         int index = 0;
         Scanner scanner = new Scanner(System.in);
 
@@ -97,10 +98,17 @@ public class Main {
 
                     for (int i = 0; i < personnages.length; i++) {
                         if (i == elem) {
-                            for (int j = i; j < personnages.length - 1; j++) {
-                                personnages[j] = personnages[j + 1];
+                            newArray = new Personnage[personnages.length - 1];
+                            for (int u = 0; u < i; u++) {
+                                newArray[u] = personnages[u];
                             }
-                            break;
+                            for (int j = i; j < personnages.length - 1; j++) {
+                                newArray[j] = personnages[j + 1];
+                            }
+                            personnages = new Personnage[newArray.length];
+                            for (int z = 0; z < newArray.length; z++) {
+                                personnages[z] = newArray[z];
+                            }
                         }
                     }
                     System.out.println("Le personnage " + personnages + " à bien été supprimer");

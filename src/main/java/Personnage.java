@@ -1,3 +1,7 @@
+/**
+ * @author arthur
+ * @version 1.0
+ */
 
 public class Personnage {
     //Attributs
@@ -14,6 +18,13 @@ public class Personnage {
 
     }
 
+    /**
+     * @param pNom
+     * @param pImage
+     * @param pVie
+     * @param pForce
+     */
+
     public Personnage(String pNom, String pImage, int pVie, int pForce) {
         this.nom = pNom;
         this.image = pImage;
@@ -29,6 +40,7 @@ public class Personnage {
                 + "force : " + this.force + "\n"
                 + "vie : " + this.vie + "\n";
     }
+
 
 
     // ************************* ACCESSEURS ************************* //
