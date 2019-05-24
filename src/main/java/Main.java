@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -5,16 +6,17 @@ public class Main {
     public static void main(String[] args) {
         Personnage[] personnages = new Personnage[20];
         Personnage[] newArray = null;
+        ArrayList personnage = new ArrayList();
         int index = 0;
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("      ,     \\    /      ,        \n" +
+        System.out.println("        ,     \\    /      ,        \n" +
                 "       / \\    )\\__/(     / \\       \n" +
                 "      /   \\  (_\\  /_)   /   \\      \n" +
                 " ____/_____\\__\\@  @/___/_____\\____ \n" +
                 "|             |\\../|              |\n" +
                 "|              \\VV/               |\n" +
-                "|        DONJONS & DRAGONS        |\n" +
+                "|       DONJONS & DRAGONS         |\n" +
                 "|_________________________________|\n" +
                 " |    /\\ /      \\\\       \\ /\\    | \n" +
                 " |  /   V        ))       V   \\  | \n" +
@@ -30,15 +32,26 @@ public class Main {
             System.out.println("3 . Supprimer un personnage");
             System.out.println("4 . Modifier un personnage");
             System.out.println("5 . Quitter le jeu");
+            int menu = 0;
+            try {
+                menu = scanner.nextInt();
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("Saisissez un chiffre entre 1 et 5");
+            }
+            scanner.nextLine();
 
-            int menu = scanner.nextInt();
             // la méthode switch permet de créer mon menu.
-
             switch (menu) {
                 case 1:
-
                     System.out.println("Veuillez choisir votre personnage : 1 . Guerrier ou 2 . Magicien:");
-                    int type = scanner.nextInt();
+                    int type = 0;
+                    try {
+                        type = scanner.nextInt();
+                    } catch (java.util.InputMismatchException e) {
+                        System.out.println("Saisissez un chiffre correct");
+                    }
+                    scanner.nextLine();
+
                     if (type == 1) {
                         System.out.println("Vous avez choisi un guerrier");
                         Scanner stc = new Scanner(System.in);
