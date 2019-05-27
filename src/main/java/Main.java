@@ -4,9 +4,10 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Personnage[] personnages = new Personnage[20];
-        Personnage[] newArray = null;
+       // Personnage[] personnages = new Personnage[20];
+        // Personnage[] newArray = null;
         ArrayList personnage = new ArrayList();
+        ArrayList <Integer>suppr = new ArrayList();
         int index = 0;
         Scanner scanner = new Scanner(System.in);
 
@@ -67,8 +68,9 @@ public class Main {
                         Arme newArme = new Arme(Armes.random(), 6);
                         System.out.println("L'arme du guerrier : " + newArme.getNomArme() + " puissance : " + newArme.niveauAttaque);
                         System.out.println("Un guerrier " + nom + " à bien été créé");
-                        personnages[index] = new Guerrier(nom, "image", vie, force, "bouclier");
-                        System.out.println(personnages[index].toString());
+                        Personnage newGuerr = new Guerrier(nom, "image", vie, force, "bouclier");
+                        personnage.add(newGuerr);
+                        System.out.println(personnage.toString());
                         index++;
 
 
@@ -89,26 +91,28 @@ public class Main {
                         Sort newSort = new Sort(Sorts.random(), 8);
                         System.out.println("Le sort du magicien : " + newSort.getNomSort() + " puissance : " + newSort.niveauAttaque);
                         System.out.println("Un magicien " + nom + " à bien été créé");
-                        personnages[index] = new Magicien(nom, "image", viemag, forcemag, "philtre");
-                        System.out.println(personnages[index].toString());
+                        Personnage newMage = new Magicien(nom, "image", viemag, forcemag, "philtre");
+                        personnage.add(newMage);
+                        System.out.println(personnage.toString());
                         index++;
                         System.out.println("------------------------------------------------------------------------------");
                     }
                     break;
                 case 2:
-                    for (int i = 0; i < personnages.length; i++) {
+                    //for (int i = 0; i < personnage.size(); i++) {
                         // System.out.print("(id = " + i + ") ");
-                        if (personnages[i] != null) {
-                            System.out.println(personnages[i].toString());
-                        }
-                    }
+                      //  if (personnages[i] != null) {
+                            System.out.println(personnage.toString());
+                        //}
+                   // }
                     break;
                 case 3:
                     // suppression personnage
                     Scanner in = new Scanner(System.in);
                     System.out.print("Sélectionnez l'élément à supprimer (0/1/2/...) :  ");
                     int elem = in.nextInt();
-
+                    personnage.remove(elem);
+                    /** Suppression avec tableaux
                     for (int i = 0; i < personnages.length; i++) {
                         if (i == elem) {
                             newArray = new Personnage[personnages.length - 1];
@@ -124,14 +128,14 @@ public class Main {
                             }
                         }
                     }
-                    System.out.println("Le personnage " + personnages + " à bien été supprimer");
+ */                    System.out.println("Le personnage " + personnage + " à bien été supprimer");
                     break;
 
                 case 4:
                     System.out.println("Quel personnage souhaitez-vous modifier ?");
                     int choix = scanner.nextInt();
-
-                    Personnage modif = personnages[choix];
+                    System.out.println(choix);
+                    Personnage modif = (Personnage) personnage.get(choix);
 
                     System.out.println("Quel attribut voulez-vous modifier ?");
                     System.out.println("1 . Nom");
